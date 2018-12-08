@@ -1,0 +1,112 @@
+{extend name="layout:public"}
+{block name="main"}
+		<!--Page Title-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<div id="page-title">
+	<h1 class="page-header text-overflow">栏目列表</h1>
+
+	<!--Searchbox
+	<div class="searchbox">
+		<div class="input-group custom-search-form">
+			<input type="text" class="form-control" placeholder="搜索..">
+				<span class="input-group-btn">
+					<button class="text-muted" type="button"><i class="demo-pli-magnifi-glass"></i></button>
+				</span>
+		</div>
+	</div>-->
+</div>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--End page title-->
+
+
+<!--Breadcrumb-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<ol class="breadcrumb">
+	<li><a href="#">首页</a></li>
+	<li><a href="#">栏目管理</a></li>
+	<li class="active">栏目列表</li>
+</ol>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--End breadcrumb-->
+
+
+
+
+<!--Page content-->
+<!--===================================================-->
+<div id="page-content">
+
+
+	<div class="panel">
+		<div class="panel-heading">
+			<h3 class="panel-title">添加栏目</h3>
+		</div>
+		
+		<form id="demo-bvd-notempty" action="{:url('Category/add')}" class="form-horizontal form" method="post">
+            <div class="panel-body">
+
+                <!--REGULAR EXPRESSION BASED VALIDATORS-->
+                <!--===================================================-->
+                <fieldset>
+                    <div class="form-group text-left">
+                        <label class="col-sm-1 control-label">父级节点</label>
+                        <div class="col-sm-7">
+                             <select id="demo-select2" name="pid" class="demo_select2 form-control">
+                                <optgroup label="父级节点">
+                                    <option value="0">顶级栏目</option>
+                                   
+                                </optgroup>
+                             </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">栏目名称</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control"  name="catename" placeholder="栏目名称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">关键词</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control"  name="seo_keyword" placeholder="关键词">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">描述</label>
+                        <div class="col-sm-7">
+                           <textarea name="seo_desc" class="form-control" id="" cols="20" rows="10"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">缩略图</label>
+                        <div class="col-sm-7">
+                            <span class="pull-left btn btn-primary btn-file">
+                                上传...<input type="file" class="form-control"  name="thumb" >
+                            </span>
+                            
+                        </div>
+                    </div>
+
+                </fieldset>
+                <!--===================================================-->
+
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-sm-7 col-sm-offset-3">
+                        <button class="btn btn-primary sub" type="button">提交</button>
+                        <button class="btn btn-default" type="reset">重置</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+	</div>
+</div>
+
+
+{/block}
+{block name="js"}
+
+{/block}

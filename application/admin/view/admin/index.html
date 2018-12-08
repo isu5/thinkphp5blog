@@ -1,0 +1,137 @@
+{extend name="layout:public"}
+{block name="main"}
+
+<!--Page Title-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<div id="page-title">
+	<h1 class="page-header text-overflow">管理员列表</h1>
+
+	<!--Searchbox-->
+	<div class="searchbox">
+		<div class="input-group custom-search-form">
+			<input type="text" class="form-control" placeholder="搜索..">
+				<span class="input-group-btn">
+					<button class="text-muted" type="button"><i class="demo-pli-magnifi-glass"></i></button>
+				</span>
+		</div>
+	</div>
+</div>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--End page title-->
+
+
+<!--Breadcrumb-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<ol class="breadcrumb">
+	<li><a href="#">首页</a></li>
+	<li><a href="#">后台权限管理</a></li>
+	<li class="active">管理员列表</li>
+</ol>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--End breadcrumb-->
+
+
+
+
+<!--Page content-->
+<!--===================================================-->
+<div id="page-content">
+
+
+	<div class="panel">
+		<div class="panel-heading">
+			<h3 class="panel-title">管理员列表</h3>
+		</div>
+
+		<!-- Striped Table -->
+		<!--===================================================-->
+		<div class="panel-body">
+			<div class="pad-btm form-inline">
+				<div class="row">
+					<div class="col-sm-6 table-toolbar-left">
+						<a href="{:url('Admin/add')}" >
+						<button id="demo-btn-addrow" class="btn btn-purple"><i class="demo-pli-add"></i> 添加管理员</button>
+						</a>
+					</div>
+					<!--<div class="col-sm-6 table-toolbar-right">
+						<div class="form-group">
+							<input id="demo-input-search2" type="text" placeholder="Search" class="form-control" autocomplete="off">
+						</div>
+						<div class="btn-group">
+							<button class="btn btn-default"><i class="demo-pli-download-from-cloud"></i></button>
+
+						</div>
+					</div>-->
+				</div>
+			</div>
+			<div class="table-responsive">
+				<table class="table table-striped">
+					<thead>
+					<tr>
+						<th>用户名</th>
+						<th>所属角色</th>
+						<th>登录时间</th>
+						<th>登录ip</th>
+						<th>操作</th>
+					</tr>
+					</thead>
+					<tbody>
+					{volist name="list" id="vo"}
+					<tr>
+						<td><a href="#fakelink" class="btn-link">{$vo.username}</a></td>
+						<td>{$vo.title}</td>
+						<td>{$vo.lasttime|date="Y-m-d H:i:s",###}</td>
+						<td>{$vo.lastip}</td>
+						<td>
+							<a href="{:url('Admin/edit' , array('id'=>$vo['id']))}"><i class='fa fa-pencil'></i> 编辑</a>&nbsp;&nbsp;
+							<a href="javascript:dels({$vo['id']});"><i class="fa fa-trash-o"></i> 删除</a>
+						</td>
+					</tr>
+					{/volist}
+					</tbody>
+				</table>
+				<div>
+					{$list->render()}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+	<!--===================================================-->
+	<!-- End Striped Table -->
+
+	{/block}
+{block name="js"}
+<script>
+	function dels(id){
+		var id_array = new Array();
+		$("input[type=checkbox]").each(function(){
+			if($(this).is(":checked")) id_array.push($(this).val());//向数组中添加元素
+		});
+
+		var idstr = id_array.join(',')?id_array.join(','):id;//将数组元素连接起来以构建一个字符串
+
+        layer.confirm('确认要删除吗？',{
+            icon: 3,
+            title: '提示信息',
+            btn: ['是的','取消'], //按钮
+            shade: [0.4, '#393D49']
+        },function(){
+            //此处请求后台程序，下方是成功后的前台处理……
+            $.get('{:url("Admin/del")}', { "id": idstr },function(data){
+                if(data.code==1){
+                    layer.msg(data.msg, { icon: 1, time: 2000 ,shade: 0.5},function(index){
+                        window.location.reload();//刷新当前页面
+                    });
+                }else{
+                    layer.msg(data.msg, {icon: 2, time: 2000,shade: 0.5 });
+                }
+
+            }, "json");
+
+        });
+	}
+</script>
+{/block}

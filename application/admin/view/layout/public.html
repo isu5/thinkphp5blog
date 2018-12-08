@@ -1,0 +1,168 @@
+﻿{include file="layout/header"}
+
+<body>
+<div id="container" class="effect aside-float aside-bright mainnav-lg">
+    <header id="navbar">
+        <div id="navbar-container" class="boxed">
+
+            <!--Brand logo & name-->
+            <!--================================-->
+            <div class="navbar-header">
+                <a href="{:url('/admin/index')}" class="navbar-brand">
+                    <!-- <img src="img/logo.png" alt="Nifty Logo" class="brand-icon">-->
+                    <div class="brand-title">
+                        <span class="brand-text">后台</span>
+                    </div>
+                </a>
+            </div>
+            <!--================================-->
+            <!--End brand logo & name-->
+
+
+            <!--Navbar Dropdown-->
+            <!--================================-->
+            <div class="navbar-content clearfix">
+                <ul class="nav navbar-top-links pull-left">
+
+                    <!--Navigation toogle button-->
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <li class="tgl-menu-btn">
+                        <a class="mainnav-toggle" href="#">
+                            <i class="demo-pli-view-list"></i>
+                        </a>
+                    </li>
+
+
+                </ul>
+                <ul class="nav navbar-top-links pull-right">
+
+                    <!--Language selector-->
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <li class="dropdown">
+                        <a id="demo-lang-switch" class="lang-selector dropdown-toggle" href="#" data-toggle="dropdown">
+				<!-- <span class="lang-selected">
+					<img class="lang-flag" src="img/flags/united-kingdom.png" alt="English">
+				</span> -->
+                        </a>
+
+                        <!--Language selector menu-->
+                        <ul class="head-list dropdown-menu">
+                            <li>
+                                <!--English-->
+                                <a href="#" class="active">
+                                    <img class="lang-flag" src="__ADMIN__/img/flags/united-kingdom.png" alt="English">
+                                    <span class="lang-id">EN</span>
+                                    <span class="lang-name">English</span>
+                                </a>
+                            </li>
+                           
+                        </ul>
+                    </li>
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <!--End language selector-->
+
+                    <li>
+                        <a class="ajax" href="javascript:void(0);" data_url="{:url('Admin/cache')}" class="aside-toggle navbar-aside-icon">
+                            <i class=""></i>清除缓存
+                        </a>
+                    </li>
+
+                    <!--User dropdown-->
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <li id="dropdown-user" class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
+				<span class="pull-right">
+					<!--<img class="img-circle img-user media-object" src="img/profile-photos/1.png" alt="Profile Picture">-->
+					<i class="demo-pli-male ic-user"></i>
+				</span>
+                            <div class="username hidden-xs">{$Think.session.fadminusername}</div>
+                        </a>
+
+
+                        <div class="dropdown-menu dropdown-menu-md dropdown-menu-right panel-default">
+
+                            <!-- Dropdown heading  -->
+                            <div class="pad-all bord-btm">
+                                <p class="text-main mar-btm">
+                                    个人设置
+                                </p>
+
+                            </div>
+
+
+                            <!-- User dropdown menu -->
+                            <ul class="head-list">
+                                <li>
+                                    <a href="#">
+                                        <i class="demo-pli-male icon-lg icon-fw"></i> 个人设置
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+
+                                        <i class="demo-pli-gear icon-lg icon-fw"></i> 修改密码
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <!-- Dropdown footer -->
+                            <div class="pad-all text-right">
+                                <a href="{:url('Login/logout')}" class="btn btn-primary">
+                                    <i class="demo-pli-unlock"></i> 退出
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <!--End user dropdown-->
+
+                    <li>
+                        <a href="#" class="aside-toggle navbar-aside-icon">
+                            <i class="pci-ver-dots"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!--================================-->
+            <!--End Navbar Dropdown-->
+
+        </div>
+    </header>
+
+    <div class="boxed">
+        <div id="content-container">
+            {block name="main"}主内容{/block}
+        </div>
+
+       {include file="layout/menu"}
+    </div>
+    <!-- FOOTER -->
+    <!--===================================================-->
+    <footer id="footer">
+        <!-- Visible when footer positions are static -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <div class="hide-fixed pull-right pad-rgt">
+            www.isu5.cn
+        </div>
+        <p class="pad-lft">&#0169; 2013-2018 爱酥网络</p>
+
+    </footer>
+    <!--===================================================-->
+    <!-- END FOOTER -->
+    <!-- SCROLL PAGE BUTTON -->
+    <!--===================================================-->
+    <button class="scroll-top btn">
+        <i class="pci-chevron chevron-up"></i>
+    </button>
+    <!--===================================================-->
+
+
+
+
+
+</div>
+
+{block name="js"}js处理{/block}
+
+</body>
+</html>

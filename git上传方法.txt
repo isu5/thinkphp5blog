@@ -1,0 +1,20 @@
+码云上传项目git命令总结:
+git clone https://gitee.com/isu5cn/tpauth.git
+
+进入到克隆下来的文件夹，然后操作git命令
+
+Git add .
+
+Git commit –m “备注说明”
+
+Git push
+
+要求输入帐号 lxx1024
+
+密码 81487…LOVE
+
+上传成功
+
+首先，你需要执行下面两条命令，作为 git 的基础配置，作用是告诉 git 你是谁，你输入的信息将出现在你创建的提交中。
+git config --global user.name "你的名字或昵称"
+git config --global user.email "你的邮箱"

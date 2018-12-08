@@ -1,0 +1,142 @@
+{extend name="layout:public"}
+{block name="main"}
+		<!--Page Title-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<div id="page-title">
+	<h1 class="page-header text-overflow">权限列表</h1>
+
+	<!--Searchbox
+	<div class="searchbox">
+		<div class="input-group custom-search-form">
+			<input type="text" class="form-control" placeholder="搜索..">
+				<span class="input-group-btn">
+					<button class="text-muted" type="button"><i class="demo-pli-magnifi-glass"></i></button>
+				</span>
+		</div>
+	</div>-->
+</div>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--End page title-->
+
+
+<!--Breadcrumb-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<ol class="breadcrumb">
+	<li><a href="#">首页</a></li>
+	<li><a href="#">后台权限管理</a></li>
+	<li class="active">权限列表</li>
+</ol>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--End breadcrumb-->
+
+
+
+
+<!--Page content-->
+<!--===================================================-->
+<div id="page-content">
+
+
+	<div class="panel">
+		<div class="panel-heading">
+			<h3 class="panel-title">添加权限节点</h3>
+		</div>
+
+		<form id="demo-bvd-notempty" action="{:url('Admin/node_edit')}" class="form-horizontal form" method="post">
+            <div class="panel-body">
+                <input type="hidden" name="id" value="{$info.id}">
+                <!--REGULAR EXPRESSION BASED VALIDATORS-->
+                <!--===================================================-->
+                <fieldset>
+                    <div class="form-group text-left">
+                        <label class="col-sm-1 control-label">父级节点</label>
+                        <div class="col-sm-7">
+                             <select id="demo-select2" name="pid" class="demo_select2 form-control">
+                                <optgroup label="父级节点">
+                                    <option value="0">顶级节点</option>
+                                    {$select_categorys}
+                                </optgroup>
+                             </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">权限名称</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control"  name="title" value="{$info.title}" placeholder="权限名称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">权限路径</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" name="name" value="{$info.name}" placeholder="权限路径:Index/index" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">权限类型</label>
+                        <div class="col-sm-7">
+                           <select id="" name="level">
+                           		<option value="1" {eq name="info.level" value="1"}selected{/eq}>项目</option>
+                           		<option value="2" {eq name="info.level" value="2"}selected{/eq}>模块</option>
+                           		<option value="3" {eq name="info.level" value="3"}selected{/eq}>操作</option>
+                           </select>
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <label class="col-sm-1 control-label">是否菜单</label>
+                        <div class="col-sm-7">
+                        	<div class="radio">
+	                          	<input id="demo-inline-form-radio1" class="magic-radio" name="condition" checked="" type="radio" value="0">
+	                          	<label for="demo-inline-form-radio1">否</label>
+	                          	<input id="demo-inline-form-radio2" class="magic-radio" name="condition"  type="radio" value="1">
+	                          	<label for="demo-inline-form-radio2">是</label>
+                        	</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">权限状态</label>
+                        <div class="col-sm-7">
+                      	  	<div class="radio">
+	                           	<input id="demo-inline-form-radio3" class="magic-radio" name="status" checked="" type="radio" value="1">
+	                          	<label for="demo-inline-form-radio3">启用</label>
+	                          	<input id="demo-inline-form-radio4" class="magic-radio" name="status"  type="radio" value="0">
+	                          	<label for="demo-inline-form-radio4">关闭</label>
+                       		</div>
+                        </div>
+                    </div>
+					 <div class="form-group">
+                        <label class="col-sm-1 control-label">权限图标</label>
+                        <div class="col-sm-7">
+                      	  	 <input type="text" class="form-control" name="icon" placeholder="权限图标" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">排序</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" name="sort" placeholder="排序" value="0" />
+                        </div>
+                    </div>
+
+                </fieldset>
+                <!--===================================================-->
+
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-sm-7 col-sm-offset-3">
+                        <button class="btn btn-primary sub" type="button">提交</button>
+                        <button class="btn btn-default" type="reset">重置</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+	</div>
+</div>
+
+
+{/block}
+{block name="js"}
+
+{/block}

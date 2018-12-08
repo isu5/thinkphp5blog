@@ -1,0 +1,133 @@
+{extend name="layout:public"}
+{block name="main"}
+<!--Page Title-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<div id="page-title">
+    <h1 class="page-header text-overflow">角色列表</h1>
+
+    <!--Searchbox
+    <div class="searchbox">
+        <div class="input-group custom-search-form">
+            <input type="text" class="form-control" placeholder="搜索..">
+                <span class="input-group-btn">
+                    <button class="text-muted" type="button"><i class="demo-pli-magnifi-glass"></i></button>
+                </span>
+        </div>
+    </div>-->
+</div>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--End page title-->
+
+
+<!--Breadcrumb-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<ol class="breadcrumb">
+    <li><a href="#">首页</a></li>
+    <li><a href="#">后台权限管理</a></li>
+    <li class="active">角色列表</li>
+</ol>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--End breadcrumb-->
+
+
+
+
+<!--Page content-->
+<!--===================================================-->
+<div id="page-content">
+
+
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">添加角色权限</h3>
+        </div>
+
+        <form id="demo-bvd-notempty" action="{:url('Admin/role_add')}" class="form-horizontal form" method="post">
+            <div class="panel-body">
+
+                <!--REGULAR EXPRESSION BASED VALIDATORS-->
+                <!--===================================================-->
+                <fieldset>
+
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">角色名称</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control"  name="title" placeholder="权限名称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">角色状态</label>
+                        <div class="col-sm-7">
+                            <div class="radio">
+                                <input id="demo-inline-form-radio3" class="magic-radio" name="status" checked="" type="radio" value="1">
+                                <label for="demo-inline-form-radio3">启用</label>
+                                <input id="demo-inline-form-radio4" class="magic-radio" name="status"  type="radio" value="0">
+                                <label for="demo-inline-form-radio4">关闭</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">角色权限</label>
+                        <div class="col-sm-7">
+                            <table class="table table-striped" cellpadding="0" cellspacing="1" width="100%">
+                                {volist name="AuthRule" id="vo"}
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="radio3 radio-check radio-inline">
+                                            <input type="checkbox" id="checkbox-fa-{$vo.id}" name="rules[]" value="{$vo.id}" {eq name="vo.id" value="1"}checked=""{/eq} />
+                                            <label for="checkbox-fa-{$vo.id}">{$vo.title}</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {if condition="count($vo.cate)"}
+                                {volist name="vo.cate" id="v"}
+                                <tr>
+                                    <td class="left">
+                                        <div class="radio3 radio-check radio-inline">
+                                            <input class="check{$vo.id}" type="checkbox" id="checkbox-fa-{$v.id}" name="rules[]" value="{$v.id}" />
+                                            <label for="checkbox-fa-{$v.id}">{$v.title}</label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        {if condition="count($v.cate)"}
+                                        {volist name="v.cate" id="vv"}
+                                        <div class="radio3 radio-check radio-inline">
+                                            <input class="check{$vo.id} check{$v.id}" type="checkbox" id="checkbox-fa-{$vv.id}" name="rules[]" value="{$vv.id}" />
+                                            <label for="checkbox-fa-{$vv.id}">{$vv.title}</label>
+                                        </div>
+                                        {/volist}
+                                        {/if}
+                                    </td>
+                                </tr>
+                                {/volist}
+                                {/if}
+                                {/volist}
+                            </table>
+                        </div>
+                    </div>
+
+                </fieldset>
+                <!--===================================================-->
+
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-sm-7 col-sm-offset-3">
+                        <button class="btn btn-primary sub" type="button">提交</button>
+                        <button class="btn btn-default" type="reset">重置</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+
+
+
+{/block}
+{block name="js"}
+
+{/block}

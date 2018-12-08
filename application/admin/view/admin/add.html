@@ -1,0 +1,115 @@
+{extend name="layout:public"}
+{block name="main"}
+<!--Select2 [ OPTIONAL ]-->
+<link href="__ADMIN__/plugins/select2/css/select2.min.css" rel="stylesheet">
+
+
+<!--Page Title-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<div id="page-title">
+    <h1 class="page-header text-overflow">管理员列表</h1>
+
+    <!--Searchbox-->
+    <div class="searchbox">
+        <div class="input-group custom-search-form">
+            <input type="text" class="form-control" placeholder="搜索..">
+				<span class="input-group-btn">
+					<button class="text-muted" type="button"><i class="demo-pli-magnifi-glass"></i></button>
+				</span>
+        </div>
+    </div>
+</div>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--End page title-->
+
+
+<!--Breadcrumb-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<ol class="breadcrumb">
+    <li><a href="#">首页</a></li>
+    <li><a href="#">后台权限管理</a></li>
+    <li class="active">管理员添加</li>
+</ol>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--End breadcrumb-->
+
+
+
+
+<!--Page content-->
+<!--===================================================-->
+<div id="page-content">
+
+
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">管理员添加</h3>
+        </div>
+
+        <form id="demo-bvd-notempty" action="{:url('Admin/add')}" class="form-horizontal form" method="post">
+            <div class="panel-body">
+
+                <!--REGULAR EXPRESSION BASED VALIDATORS-->
+                <!--===================================================-->
+                <fieldset>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">所属角色</label>
+                        <div class="col-sm-7">
+                             <select id="demo-select2" name="group_id" class="demo_select2 form-control">
+                                <optgroup label="所属角色">
+                                    <option value="0">请选择角色</option>
+                                    {volist name="info" id="vo"}
+                                    <option value="{$vo.id}">{$vo.title}</option>
+                                   {/volist}
+                                </optgroup>
+                             </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">用户名</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control"  name="username" placeholder="用户名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">密码</label>
+                        <div class="col-sm-7">
+                            <input type="password" class="form-control" name="password" placeholder="密码" />
+                        </div>
+                    </div>
+
+                </fieldset>
+                <!--===================================================-->
+
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-sm-7 col-sm-offset-3">
+                        <button class="btn btn-primary sub" type="button">提交</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+</div>
+</div>
+
+
+<!--===================================================-->
+<!-- End Striped Table -->
+
+{/block}
+{block name="js"}
+<!--Bootstrap Validator [ OPTIONAL ]-->
+<script src="__ADMIN__/plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
+
+
+<!--Masked Input [ OPTIONAL ]-->
+<script src="__ADMIN__/plugins/masked-input/jquery.maskedinput.min.js"></script>
+
+
+<!--Form validation [ SAMPLE ]-->
+<script src="__ADMIN__/js/demo/form-validation-zh.js" charset="UTF-8"></script>
+<!--Select2 [ OPTIONAL ]-->
+<script src="__ADMIN__/plugins/select2/js/select2.min.js"></script>
+{/block}
