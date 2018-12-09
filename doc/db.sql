@@ -7,3 +7,14 @@ seo_desc varchar(120) not null default '' comment '描述',
 thumb varchar(200) not null default '' comment '缩略图',
 addtime int not null comment '添加时间'
 )engine=innodb charset=utf8 comment="栏目表";
+
+create table tp5_artile(
+id int unsigned not null primary key auto_increment,
+cid int unsigned not null default 0 comment '栏目id',
+tid int unsigned not null default 0 comment '标签id',
+title varchar(200) not null default '' comment '文章标题',
+thumb varchar(200) not null default '' comment '缩略图',
+content text,
+sort int unsigned not null default 0 comment '排序',
+addtime int unsigned comment '添加时间'
+)engine=innodb charset=utf8 comment '文章表',
