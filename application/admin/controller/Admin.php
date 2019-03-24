@@ -30,8 +30,8 @@ class Admin extends Base{
 	public function index(){
 		$field = ['a.id' , 'a.username' , 'a.lastip' , 'a.lasttime' , 'a.addtime' , 'c.title'];
 		$join = [
-			['tp5_auth_group_access b' , 'b.uid = a.id'],
-			['tp5_auth_group c' , 'c.id = b.group_id']
+			['blog_auth_group_access b' , 'b.uid = a.id'],
+			['blog_auth_group c' , 'c.id = b.group_id']
 		];
 
 		$list =  db('Admin')->alias('a')->field($field)->join($join)->paginate(10);
